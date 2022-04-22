@@ -461,12 +461,12 @@ def pytorch_to_mdf(
     previous_opset_version = _export_onnx_opset_version
     _set_opset_version(modeci_onnx_opset_version)
     graph, params_dict, torch_out = _model_to_graph(
-        model=jit_model if graph else model,
+        model=(jit_model if graph else model),
         args=args,
-        example_outputs=example_outputs,
+        #example_outputs=example_outputs,
         do_constant_folding=False,
         training=TrainingMode.EVAL,
-        _retain_param_name=True,
+        #_retain_param_name=True,
         operator_export_type=operator_export_type,
         dynamic_axes={},
     )
